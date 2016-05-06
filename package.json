@@ -1,5 +1,5 @@
 {
-  "name": "padfy-backoffice",
+  "name": "angularSeed",
   "version": "1.0.0",
   "description": "* npm * bower",
   "main": "index.js",
@@ -8,11 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://rmatei9@bitbucket.org/medeasolutions/padfy-backoffice.git"
+    "url": "git+https://github.com/medeasolution/angularSeed.git"
   },
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/medeasolutions/padfy-backoffice#readme",
+  "homepage": "https://github.com/medeasolution/angularSeed/blob/master/README.md",
   "devDependencies": {
     "bower": "^1.7.9",
     "gulp-bower": "0.0.13",
