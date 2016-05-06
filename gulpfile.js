@@ -10,12 +10,10 @@ var gutil = require('gulp-util');
 var minifyCss = require('gulp-clean-css');
 var rename = require('gulp-rename');
 var connect = require('gulp-connect');
-var rjs = require('gulp-requirejs');
 var sh = require('shelljs');
 
 var paths = {
-    sass: ['./scss/**/*.scss'],
-    js: ['./www/app/**/*.js']
+    sass: ['./scss/**/*.scss']
 };
 
 gulp.task('sass', function(done) {
@@ -62,6 +60,6 @@ gulp.task('connect', function () {
     })
 });
 
-gulp.task('serve', ['install', 'git-check', 'watch', 'connect']);
+gulp.task('serve', ['install', 'git-check', 'sass', 'watch', 'connect']);
 
 gulp.task('default', ['serve']);
