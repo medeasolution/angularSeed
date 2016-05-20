@@ -8,6 +8,10 @@
 
 npm install
 
-## RUN APP ##
+## RUN DEV APP ##
 
 gulp serve
+
+## GENERATE PRODUCTION READY APP ##
+
+gulp dist
