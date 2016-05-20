@@ -11,6 +11,7 @@ var minifyCss = require('gulp-clean-css');
 var rename = require('gulp-rename');
 var connect = require('gulp-connect');
 var sh = require('shelljs');
+var rjs = require('gulp-requirejs');
 
 var paths = {
     sass: ['./scss/**/*.scss']
@@ -60,6 +61,27 @@ gulp.task('connect', function () {
     })
 });
 
+gulp.task('generate-dist', ['dist-copy-files', 'dist-generate-jsbundle']);
+
+gulp.task('dist-copy-files', function(){
+    gulp.src(['./www/css/**/*']).pipe(gulp.dest('dist/css'));
+    gulp.src(['./www/templates/**/*']).pipe(gulp.dest('dist/templates'));
+    gulp.src(['./www/index.html']).pipe(gulp.dest('dist'));
+    gulp.src(['./www/main.js']).pipe(gulp.dest('dist'));
+    gulp.src(['./www/lib/requirejs/require.js']).pipe(gulp.dest('dist/lib/requirejs'));
+});
+
+gulp.task('dist-generate-jsbundle', function(){
+    rjs({
+        baseUrl: 'www/app',
+        mainConfigFile: 'www/main.js',
+        name: "boot",
+        out: "app/boot.js"
+    }).pipe(gulp.dest('dist'));
+});
+
 gulp.task('serve', ['install', 'git-check', 'sass', 'watch', 'connect']);
+
+gulp.task('dist', ['install', 'git-check', 'sass', 'generate-dist']);
 
 gulp.task('default', ['serve']);

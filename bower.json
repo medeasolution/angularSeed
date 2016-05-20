@@ -16,10 +16,10 @@
   ],
   "dependencies": {
     "angular": "^1.5.5",
-    "requirejs": "^2.2.0",
-    "bootstrap": "^3.3.6",
-    "jsog": "^1.0.7",
+    "angular-translate": "^2.11.0",
     "angular-ui-router": "^0.2.18",
-    "angular-translate": "^2.11.0"
+    "bootstrap-sass": "~3.3.6",
+    "jsog": "^1.0.7",
+    "requirejs": "^2.2.0"
   }
 }

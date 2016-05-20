@@ -5,6 +5,7 @@ define([
     'angularRouter',
     'angularTranslate',
     'jsog',
+    'bootstrap',
     'translates/EsTranslate'],
     function (angular) {
         'use strict';
