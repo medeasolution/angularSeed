@@ -158,21 +158,22 @@ var removeHtmlComments = require('gulp-remove-html-comments');
 var minify = require('gulp-minify');
 
 var paths = {
-    sass: ['./www/assets/scss/**/*.scss']
+    sass: ['./scss/**/*.scss']
 };
 gulp.task('sass', ['install'], function(done) {
-    gulp.src('./www/assets/scss/app.scss')
+    gulp.src('./scss/app.scss')
         .pipe(sass())
         .on('error', sass.logError)
         .pipe(gulp.dest('./www/css/'))
         .on('end', done);
 });
 
-gulp.task('combine-css', ['sass'], function(){
+gulp.task('combine-css', ['sass'], function(done){
     gulp.src(['./www/css/app.css', './www/lib/angular-bootstrap/ui-bootstrap-csp.css', './www/lib/simple-line-icons/css/simple-line-icons.css'])
         .pipe(cleanCSS())
         .pipe(concat('style.css'))
-        .pipe(gulp.dest('./www/css'));
+        .pipe(gulp.dest('./www/css'))
+        .on('end', done);
 });
 
 gulp.task('copy-fonts', ['install'], function(cb){
@@ -224,7 +225,7 @@ gulp.task('dist-copy-templates', ['install'], function(done){
         .on('error', done);
 });
 
-gulp.task('dist-copy-files', ['copy-fonts'], function(){
+gulp.task('dist-copy-files', ['copy-fonts', 'combine-css'], function(){
     gulp.src(['./www/css/style.css']).pipe(gulp.dest('dist/css'));
     gulp.src(['./www/fonts/**/*']).pipe(gulp.dest('dist/fonts'));
     gulp.src(['./www/index.html'])
